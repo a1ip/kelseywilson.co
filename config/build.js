@@ -1,26 +1,25 @@
-//  Start, Steps, and Build Error Messages
-var chalk = require("chalk");
-var browsersync = require("browser-sync").create();
-var config = { browsersync: require("./browsersync") };
-
 // Inform that the site build has started
 (function(){
-  console.log("\n" + chalk.underline("Building your site\n"));
+  console.log("========================");
+  console.log("Build process started...");
+  console.log("========================");
 })();
 
 module.exports = {
   // Log each step as it finishes
   step: function(message) {
-    console.log(chalk.green(">> ") + message);
+    console.log(">> " + message);
   },
-  // Launch Browsersync server after build is done
-  serve: function(error) {
-    browsersync.init(config.browsersync);
+  // Throw error or log build completion
+  status: function(error) {
     if (error) {
       // Reports any build errors on initial build
-      // TODO: throw after a rebuild as well
-      console.log(chalk.magenta.underline("\nOops, there was a problem!"));
-      console.log(error.message + "\n");
+      console.log("Oops, there was a problem!");
+      console.log(error.message);
+    } else {
+      console.log("========================");
+      console.log("Build process completed!");
+      console.log("========================");
     }
   }
 }

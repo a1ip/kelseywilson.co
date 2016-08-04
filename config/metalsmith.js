@@ -12,7 +12,6 @@ var permalinks   = require("metalsmith-permalinks");
 var prefix       = require("metalsmith-autoprefixer");
 var sass         = require("metalsmith-sass");
 var uglify       = require("metalsmith-uglify");
-var watch        = require("metalsmith-watch");
 
 //========================
 //  Log and config files
@@ -20,7 +19,7 @@ var watch        = require("metalsmith-watch");
 
 var defaults = require("./defaults");
 var step     = require("./build").step;
-var serve    = require("./build").serve;
+var status   = require("./build").status;
 
 var config = {
   assets:      require("./assets"),
@@ -33,7 +32,6 @@ var config = {
   permalinks:  require("./permalinks"),
   sass:        require("./sass"),
   uglify:      require("./uglify"),
-  watch:       require("./watch")
 };
 
 //=======================================
@@ -41,7 +39,7 @@ var config = {
 //=======================================
 
 metalsmith(__dirname)
-  .clean(false)
+  .clean(true)
   .metadata(defaults,                     step("Metadata Defined"))
   .source("../" + defaults.contentDir,    step("Getting content"))
   .destination("../" + defaults.buildDir, step("Creating build directory"))
@@ -58,5 +56,4 @@ metalsmith(__dirname)
   .use(sass(config.sass),                 step("SCSS Processed"))
   .use(prefix(),                          step("CSS Prefixed"))
   .use(uglify(config.uglify),             step("JS Uglified"))
-  .use(watch(config.watch))
-  .build(serve);
+  .build(status);
