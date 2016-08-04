@@ -1,0 +1,553 @@
+$grid-spacing: 1%;
+$nav-item-size: 1rem;
+$dark-grey: #666;
+$middle-grey: #bbb;
+$light-grey: #f2f2f2;
+$green: #B6B076;
+
+.no-scroll { overflow: hidden; }
+
+/*-----------------------------
+  Z-Index Reference
+-------------------------------
+
+  .modal        = 50
+  .navicon      = 40
+  .nav          = 30
+  .header       = 20
+  .spinner-wrap = 10
+
+/*-----------------------------
+    Base
+-----------------------------*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color: $middle-grey;
+  font-size: 16px;
+  position: relative;
+}
+
+body {
+  background-color: white;
+  font-family: 'Sentinel A', 'Sentinel B';
+  font-weight: 400;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*-----------------------------
+    Header
+-----------------------------*/
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-2rem); }
+  to { transform: translateY(0); }
+}
+
+/*-----------------------------
+    Header
+-----------------------------*/
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 $grid-spacing;
+  position: relative;
+  z-index: 20;
+  animation: fadeIn 750ms ease-out, slideDown 750ms ease-out;
+}
+
+@media only screen and (min-width: 640px) {
+  .header {
+    height: 10rem;
+    margin: 0 auto;
+  }
+}
+
+/*-----------------------------
+    Navigation
+-----------------------------*/
+
+.nav { font-size: $nav-item-size; }
+
+.logo {
+  color: $dark-grey;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  float: left;
+  font-size: 1rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo-inner {
+  color: $middle-grey;
+}
+
+@media only screen and (max-width: 960px)  {
+  .logo-inner { display: none; }
+}
+
+.nav-list,
+.nav-item,
+.nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item { margin-left: 1.25rem; }
+
+.nav-item-icon {
+  height: $nav-item-size;
+  width: $nav-item-size;
+}
+
+.nav-link {
+  color: $middle-grey;
+  fill: $middle-grey;
+  text-decoration: none;
+  transition: color 500ms ease, fill 500ms ease;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.navicon {
+  display: none;
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 5px;
+  z-index: 40;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.navicon-lines:before,
+.navicon-lines:after {
+  content: '';
+  display: block;
+  background-color: $middle-grey;
+  height: 2px;
+  width: 25px;
+  transform-origin: center;
+  transition: transform 300ms, background 300ms;
+}
+
+.navicon-lines:before { transform: translateY(-3px); }
+.navicon-lines:after { transform: translateY(3px); }
+
+.navicon.is-open .navicon-lines:before { transform: translateY(1px) rotate(45deg); }
+.navicon.is-open .navicon-lines:after { transform: translateY(-1px) rotate(-45deg); }
+
+.navicon:hover .navicon-lines:before,
+.navicon:hover .navicon-lines:after {
+  background-color: $green;
+}
+
+.nav-link:hover { color: $green; }
+
+.nav-link.current {
+  color: $dark-grey;
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 850px) {
+  .navicon { display: block; }
+
+  .nav {
+    opacity: 0;
+    visibility: hidden;
+
+    display: flex;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 30;
+
+    font-size: $nav-item-size * 2;
+    background-color: rgba(25,25,25,0.95);
+    transition: opacity 300ms, visibility 300ms;
+
+    // get it out of the way when it's not open
+    pointer-events: none;
+  }
+
+  .nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    // Fixing flickering background
+    transform: translate3d(0, 0, 0);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: left;
+    justify-content: space-between;
+    margin: 10%;
+    min-height: 600px;
+    width: 100%;
+  }
+
+  .nav-item {
+    align-items: flex-start;
+    margin-left: 0;
+    opacity: 0;
+    transform: translateX(-100%);
+    /* do not transition nav items when nav is closed*/
+    transition: none;
+    transform-origin: right;
+    transition-timing-function: ease-in-out;
+    transition-delay: 100ms;
+  }
+
+  .nav-item:nth-child(0) { transition-duration: 50ms; }
+  .nav-item:nth-child(1) { transition-duration: 100ms; }
+  .nav-item:nth-child(2) { transition-duration: 150ms; }
+  .nav-item:nth-child(3) { transition-duration: 200ms; }
+  .nav-item:nth-child(4) { transition-duration: 250ms; }
+  .nav-item:nth-child(5) { transition-duration: 300ms; }
+  .nav-item:nth-child(6) { transition-duration: 350ms; }
+  .nav-item:nth-child(7) { transition-duration: 400ms; }
+  .nav-item:nth-child(8) { transition-duration: 450ms; }
+  .nav-item:nth-child(9) { transition-duration: 500ms; }
+
+  .nav.is-open .nav-item {
+    opacity: 1;
+    transform: translateX(0);
+    transition-property: opacity, transform;
+  }
+
+  .nav-item-icon {
+    height: $nav-item-size * 2;
+    width: $nav-item-size * 2;
+  }
+}
+
+/*-----------------------------
+    Grid
+-----------------------------*/
+
+.grid {
+  position: relative;
+  width: 90%;
+  /* Offset grid li top padding */
+  margin: -$grid-spacing auto 20rem auto;
+}
+
+.grid li {
+  display: block;
+  list-style: none;
+  padding: $grid-spacing;
+  /*width: 20%;*/
+}
+
+.grid a {
+  outline: none;
+}
+
+.grid img {
+  display: block;
+  /* to remove default inline-block line-height */
+  height: auto;
+  width: 100%;
+}
+
+@media only screen and (max-width: 640px) {
+  .grid {
+    width: 100%;
+    margin: 0
+  }
+
+  .grid li {
+    position: static !important;
+    width: 100% !important;
+    padding: 0;
+    padding-bottom: 20px;
+  }
+
+  .grid a,
+  .grid img {
+    pointer-events: none;
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/*-----------------------------
+    About
+-----------------------------*/
+
+.about-wrap {
+  background-color: $light-grey;
+  position: relative;
+  padding: 10%;
+}
+
+.about-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: $dark-grey;
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 3rem;
+}
+
+.about-h1 {
+  color: $middle-grey;
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: .25rem;
+  margin-bottom: 2rem;
+}
+
+.about-heading-rule {
+  border-bottom: 1px solid $middle-grey;
+  padding-bottom: 2rem;
+}
+
+.about-link {
+  color: $green;
+  text-decoration: none;
+}
+
+.clients-wrap {
+  padding: 2rem;
+  margin-top: 5%;
+  background-color: white;
+  width: 100%;
+}
+
+.client-list {
+  line-height: 2rem;
+  color: $dark-grey;
+}
+
+.client-list {
+  list-style: none;
+}
+
+/*-----------------------------
+    Contact
+-----------------------------*/
+
+.contact-wrap {
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.contact-link {
+  background-color: white;
+  padding: 1rem;
+  font-size: 75%;
+  fill: $green;
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.email-icon,
+.phone-icon {
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/*-----------------------------
+  About Page Media Queries
+-----------------------------*/
+
+@media only screen and (min-width: 480px) {
+  .about-image { width: 50% }
+}
+
+@media only screen and (min-width: 720px) {
+  .clients-wrap { padding: 5rem; }
+  .client-list { column-count: 2; }
+}
+
+@media only screen and (min-width: 900px) {
+  .about-info { flex-direction: row; }
+  .about-image {
+    max-width: 300px;
+    margin-right: 3rem;
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 1170px) {
+  .about-info { font-size: 1.5rem; }
+  .client-list { column-count: 3; }
+}
+
+@media only screen and (min-width: 1465px) {
+  .about-wrap { padding: 8% 20% 20rem 20%; }
+}
+
+/*-----------------------------
+  Message Modal
+-----------------------------*/
+
+.modal-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(200,200,200,0.9);
+  z-index: 50;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.1);;
+  padding: 75px 100px;
+  margin: 20px;
+  max-width: 700px;
+  color: $dark-grey;
+  text-align: center;
+  animation: fadeIn 1s, slideDown 1s;
+}
+
+.modal-image { margin-bottom: 1rem }
+.camera-icon { fill: $green; }
+
+.modal-h1,
+.modal-h2,
+.modal-h3 {
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.modal-h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width: auto;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
+.modal-h3:after {
+  content: '';
+  display: block;
+  margin: 1rem auto;
+  width: 75%;
+  height: 3px;
+  background-color: $green;
+}
+
+.modal a { color: $green; }
+
+@media screen and (max-width: 640px) {
+  .modal { padding: 40px; }
+  .modal-h1 { font-size: 28px; }
+  .modal-h2 { font-size: 21px; }
+}
+
+/*-----------------------------
+  Spinning Loader
+-----------------------------*/
+
+.spinner-wrap {
+  position: fixed;
+  background-color: white;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fadeOut {
+  animation: fadeOut 250ms ease-in;
+  animation-delay: 750ms;
+  animation-fill-mode: both; /* Prevents flickering when animation starts or ends */
+}
+
+.spinner {
+  width: 100px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 8px;
+  height: 8px;
+  margin: 8px;
+  background-color: $middle-grey;
+  display: inline-block;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+  animation-delay: -330ms;
+}
+
+.spinner .bounce2 {
+  animation-delay: -150ms;
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1.0); }
+}
+
+/*-----------------------------
+  Dev Helpers
+-----------------------------*/
+
+.remove-cookie {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+}
