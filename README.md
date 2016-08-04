@@ -1,116 +1,77 @@
-# Statt
-#### A [Metalsmith](http://metalsmith.io) workflow and boilerplate for building static sites.
+# The Website for Kelsey Wilson Photography
 
-It uses [Browsersync](http://browsersync.io) to autoreload on file changes, synchronize scrolls and clicks between browsers, and provide a [public URL](http://localtunnel.me) for easy cross-device development. It compiles, [autoprefixes](https://github.com/postcss/autoprefixer), minifies, and sourcemaps [SCSS](http://sass-lang.com/) and concatenates and uglifies JS. It has some default layouts and partials written in [Handlebars](http://handlebarsjs.com) and some blog posts written in [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/). Easily deploy your project with a custom domain for free using [Surge](https://surge.sh).
+This project contains two licenses. One for the content (Copyright © All Rights Reserved, unless otherwise noted), and the other for the source code (MIT).
 
-## Installation
+---
 
-**1. Make sure [Node](http://nodejs.org) and [npm](https://docs.npmjs.com/getting-started/installing-node) are installed.**
+### Copyright Notice tor the Content
 
-**2. Clone the Statt repo into a new empty project folder:**
+Copyright © 2016 Kelsey Wilson Photography
 
-```
-git clone https://github.com/jamiewilson/statt.git <folder-name>
-```
+**CREDIT**
 
-_Or manually install by [downloading the ZIP](https://github.com/jamiewilson/statt/archive/master.zip)._
+This document was created using a Contractology template available at http://www.contractology.com.
 
-**3. Install the dependencies and create a global symlink with:**
+Ownership of copyright
 
-```
-npm install && npm link
-```
+The material on this website, including the text, artwork, photographs, images, music, audio material, video material and audio-visual material on this website) is owned by Kelsey Wilson Photography.
 
-## Usage
+**COPYRIGHT LICENSE**
 
-**1. Build your site and launch the dev server with:**
+Kelsey Wilson Photography grants to you a license to:
 
-```
-statt
-```
+- View this website on a computer or mobile device via a web browser;
+- Store this website in your web browser cache; and
+- Print pages from this website for your own personal and non-commercial use.
 
-**2. To deploy your site with [Surge](https://surge.sh/):**
+Kelsey Wilson Photography does not grant you any other rights in relation to this website or the material on this website. 
 
-```
-deploy
-```
+**In other words, all other rights are reserved.**
 
-**3. When asked by Surge, set your project path to your build folder location. For example:**
+For the avoidance of doubt, you must not adapt, edit, change, transform, publish, republish, distribute, redistribute, broadcast, rebroadcast or show or play in public this website or the material on this website (in any form or media) without Kelsey Wilson Photography's prior written permission.   
 
-```
-project path: ~/projects/mysite/build
-```
+**DATA MINING**
 
-_Et voilà._
+The automated and/or systematic collection of data from this website is prohibited.
 
-## Complete list of plugins/packages:
+**PERMISSIONS**
 
-**[Metalsmith](http://metalsmith.io)**  
-An extremely simple, pluggable static site generator.
+You may request permission to use the copyright materials on this website by writing to kelsey@kelseywilson.co.
 
-**[Browsersync](https://github.com/Browsersync/browser-sync)**  
-Keep multiple browsers & devices in sync when building websites.
+**ENFORCEMENT OF COPYRIGHT**
 
-**[Handlebars](http://handlebarsjs.com/)**  
-Clean logicless templates based on the [Mustache Templating Language](http://mustache.github.com/).
+Kelsey Wilson Photography takes the protection of its copyright very seriously.
 
-**[Surge](https://github.com/sintaxi/surge)**  
-Publish web apps to a CDN with a single command and no setup required.
+If Kelsey Wilson Photography discovers that you have used its copyright materials in contravention of the license above, Kelsey Wilson Photography may bring legal proceedings against you seeking monetary damages and an injunction to stop you using those materials.  You could also be ordered to pay legal costs.
 
-### Metalsmith Plugins
+If you become aware of any use of Kelsey Wilson Photography's copyright materials that contravenes or may contravene the license above, please report this by email to kelsey@kelseywilson.co.
 
-**[metalsmith-assets](https://github.com/treygriffith/metalsmith-assets)**  
-Include static assets in your build. _Used to create a separate `/assets` folder._
+**INFRINGING MATERIAL**
 
-**[metalsmith-autoprefixer](https://github.com/esundahl/metalsmith-autoprefixer)**  
-Automatically add vendor prefixes to CSS.
+If you become aware of any material on the website that you believe infringes your or any other person's copyright, please report this by email to kelsey@kelseywilson.co.
 
-**[metalsmith-collections](https://github.com/segmentio/metalsmith-collections)**  
-Groups files together into collections, which it adds to the global metadata.
+---
 
-**[metalsmith-static](https://github.com/TheHydroImpulse/metalsmith-static)**  
-Copy public assets into the build directory. _Used to create a `/repo` folder that includes files like a `README`, `CNAME`, or `.gitignore`_
+### Source Code License
 
-**[metalsmith-date-formatter](https://github.com/hellatan/metalsmith-date-formatter)**  
-Format dates defined in the YAML Front Matter.
+The MIT License (MIT)
 
-**[metalsmith-drafts](https://github.com/segmentio/metalsmith-drafts)**  
-Hide any files marked as drafts.
+Copyright (c) 2016 Jamie Wilson, Kelsey Wilson
 
-**[metalsmith-in-place](https://github.com/superwolff/metalsmith-in-place)**  
-Allows you to render templating syntax in your source files.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-**[metalsmith-layouts](https://github.com/superwolff/metalsmith-in-place)**  
-Allows you to apply layouts to your source files.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-**[metalsmith-markdown](https://github.com/segmentio/metalsmith-markdown)**  
-Convert Markdown files to HTML.
-
-**[metalsmith-data-markdown](https://github.com/majodev/metalsmith-data-markdown)**  
-Use markdown content within html tags via data-markdown attribute.
-
-**[metalsmith-permalinks](https://github.com/segmentio/metalsmith-permalinks)**  
-Apply custom permalinks and rename files to be nested properly for static sites, basically converting about.html into about/index.html.
-
-**[metalsmith-sass](https://github.com/stevenschobert/metalsmith-sass)**  
-Convert Sass/SCSS syntax to CSS.
-
-**[metalsmith-uglify](https://github.com/ksmithut/metalsmith-uglify)**  
-Concats/uglifies/minifies your JavaScript files.
-
-**[metalsmith-watch](https://github.com/FWeinb/metalsmith-watch)**  
-Watches for a changes and triggers rebuilds.
-
-### Misc.
-
-**[Chalk](https://github.com/chalk/chalk)**  
-Terminal string styling done right.
-
-## Updating
-To fetch and merge the latest version of Statt without losing any customizations you've made, and to also avoid having to deal with any potential merge conflicts, stash your changes, pull, rebase, and pop your changes back on top:
-
-```
-git stash
-git pull --rebase
-git stash pop
-```
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
