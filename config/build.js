@@ -1,14 +1,16 @@
 // Inform that the site build has started
+
+var divider = "------------------------";
+
 (function(){
-  console.log("========================");
   console.log("Build process started...");
-  console.log("========================");
+  console.log(divider);
 })();
 
 module.exports = {
   // Log each step as it finishes
   step: function(message) {
-    console.log(">> " + message);
+    console.log(" ✓ " + message);
   },
   // Throw error or log build completion
   status: function(error) {
@@ -17,9 +19,8 @@ module.exports = {
       console.log("Oops, there was a problem!");
       console.log(error.message);
     } else {
-      console.log("========================");
-      console.log("Build process completed!");
-      console.log("========================");
+      console.log(divider);
+      console.log("Build process completed!\n");
     }
   }
 }

@@ -39,7 +39,7 @@ var config = {
 //=======================================
 
 metalsmith(__dirname)
-  .clean(true)
+  .clean(false)
   .metadata(defaults,                     step("Metadata Defined"))
   .source("../" + defaults.contentDir,    step("Getting content"))
   .destination("../" + defaults.buildDir, step("Creating build directory"))

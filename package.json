@@ -1,7 +1,7 @@
 {
-  "name": "statt",
+  "name": "kelseywilson.co",
   "version": "1.0.0",
-  "description": "A static site workflow that auto-reloads on file changes; synchronizes browsers; compiles, autoprefixes, minifies, and sourcemaps SCSS; concatenates and uglifies JS; provides an external URL for easy cross-device development.",
+  "description": "The portfolio website for Kelsey Wilson Photography.",
   "author": "Jamie Wilson",
   "license": "ISC",
   "site": {
@@ -38,6 +38,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamiewilson/statt.git"
+    "url": "https://github.com/jamiewilson/kelseywilson.co.git"
   }
 }
