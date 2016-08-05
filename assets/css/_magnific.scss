@@ -257,6 +257,10 @@ button::-moz-focus-inner {
 
 /* Main image in popup */
 
+.mfp-image-holder .mfp-content {
+  max-width: 1300px;
+}
+
 img.mfp-img {
   width: auto;
   max-width: 100%;
@@ -284,10 +288,6 @@ img.mfp-img {
   color: #f3f3f3;
   word-wrap: break-word;
   padding-right: 36px;
-}
-
-.mfp-image-holder .mfp-content {
-  max-width: 100%
 }
 
 .mfp-gallery .mfp-image-holder .mfp-figure {
