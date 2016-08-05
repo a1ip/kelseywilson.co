@@ -1,0 +1,42 @@
+/* AUTHOR */
+
+Designer/Developer: Jamie Wilson
+Photography: Kelsey Wilson
+Site: http://jamiewilson.io
+Twitter: @jmwlsn
+GitHub: @jamiewilson
+Location: Dallas, Texas
+
+/* WITH MANY THANKS TO AUTHORS OF */
+
+Browsersync
+GitHub
+Handlebars
+iTerm
+Metalsmith
+Metalsmith-assets
+Metalsmith-autoprefixer
+Metalsmith-collections (https://github.com/spacedawwwg)
+Metalsmith-data-markdown
+Metalsmith-date-formatter
+Metalsmith-drafts
+Metalsmith-in-place
+Metalsmith-layouts
+Metalsmith-markdown
+Metalsmith-permalinks
+Metalsmith-sass
+Metalsmith-static
+Metalsmith-uglify
+Netlify
+Node
+NPM
+Package Control
+Sublime Text
+Oh-My-ZSH
+Typography.com
+Anvil for Mac
+
+/* Bye. Thanks for stopping by. */
+
+
+
