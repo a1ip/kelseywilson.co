@@ -18,7 +18,9 @@
     "partialsDir": "layouts/partials",
     "defaultLayout": "grid.html"
   },
-  "scripts": { "start" : "node config/metalsmith.js" },
+  "scripts": {
+    "start": "node config/metalsmith.js"
+  },
   "dependencies": {
     "handlebars": "~4.0.5",
     "metalsmith": "~2.1.0",
