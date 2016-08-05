@@ -35,10 +35,10 @@ $(document).ready(function() {
     }
   });
 
-  $('.navicon').click(function() {
-    $('.nav, .navicon').toggleClass('is-open');
-    $('body').toggleClass('no-scroll');
-  });
+  // $('.navicon').click(function() {
+  //   $('.nav, .navicon').toggleClass('is-open');
+  //   $('body').toggleClass('no-scroll');
+  // });
 
   $('.add-cookie').click(function() {
     Cookies.set('hasSeenModal', true, { expires: 365 });
