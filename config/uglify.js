@@ -1,7 +1,7 @@
 // https://github.com/ksmithut/metalsmith-uglify
 module.exports = {
   // put dependencies before other js files
-  order: "js/deps/**/*.js",
+  order: "js/**/*.js",
   // concat and compress
   concat: "js/main.min.js",
   // remove original unminified files

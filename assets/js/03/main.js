@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+  $('.js-page-link').each(function() {
+    if (window.location.pathname === this.pathname)
+      $(this).addClass('current');
+  });
+
   // wait to layout grid until all images are loaded
   $('.grid').imagesLoaded(function() {
 

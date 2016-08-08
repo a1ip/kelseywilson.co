@@ -1,9 +1,9 @@
-<header class="header">
+<header class="header {{#if animatedHeader}}slideDownFadeIn{{/if}}">
   <a class="logo" href="/">Kelsey Wilson <span class="logo-inner">Photography</span></a>
   <nav class="nav">
     <ul class="nav-list">
     {{#each collections.pages}}
-      <li class="nav-item"><a class="nav-link" href="/{{path}}/">{{title}}</a></li>
+      <li class="nav-item"><a class="nav-link js-page-link" href="/{{path}}/">{{title}}</a></li>
     {{/each}}
       <li class="nav-item"><a class="nav-link" href="http://blog.kelseyfoster.co" alt="Blog" target="_blank">Blog</a></li>
       <li class="nav-item"><a class="nav-link" href="https://www.instagram.com/kelseywilsonphoto/" alt="Instagram" target="_blank">{{>instagram-icon}}</a></li>

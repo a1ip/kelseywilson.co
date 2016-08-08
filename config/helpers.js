@@ -1,7 +1,7 @@
 var Handlebars = require("handlebars");
 
 // slugify — ex: "This is a title" to "this-is-a-title"
-Handlebars.registerHelper("slugify", function(component, options) {
+Handlebars.registerHelper("slugify", function(component) {
   var slug = component.replace(/[^\w\s]+/gi, "").replace(/ +/gi, "-");
   return slug.toLowerCase();
 });
