@@ -21,15 +21,15 @@ $(document).ready(function() {
   $('.grid').magnificPopup({
     delegate: 'a', // child items selector, by clicking on it, the popup will open
     type: 'image',
-    gallery: { enabled: true }
+    gallery: { enabled: true },
 
-    // // disables popup on mobile
-    // disableOn: function() {
-    //   if ($(window).width() < 640) {
-    //     return false;
-    //   }
-    //   return true;
-    // }
+    // disables popup on mobile
+    disableOn: function() {
+      if ($(window).width() < 640) {
+        return false;
+      }
+      return true;
+    }
   });
 
   // disables links to image src on mobile
@@ -42,7 +42,7 @@ $(document).ready(function() {
 
   $('.navicon').click(function() {
     $('.nav, .navicon').toggleClass('is-open');
-    $('body').toggleClass('no-scroll');
+    $('html, body').toggleClass('no-scroll');
   });
 
   $('.add-cookie').click(function() {

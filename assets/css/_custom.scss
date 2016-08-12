@@ -28,6 +28,9 @@ $font-family: 'Sentinel A', 'Sentinel B';
   padding: 0;
 }
 
+// makes overflow: hidden work properly
+html, body { height: 100%; }
+
 html {
   color: $middle-grey;
   font-size: 16px;
@@ -200,6 +203,7 @@ body {
     transition: opacity 300ms, visibility 300ms;
 
     // get it out of the way when it's not open
+    transform: translateX(-100%);
     pointer-events: none;
   }
 
@@ -211,6 +215,7 @@ body {
     // Fixing flickering background
     transform: translate3d(0, 0, 0);
     transform: translateZ(0);
+    transform: translateX(0);
     backface-visibility: hidden;
     perspective: 1000;
   }
@@ -328,7 +333,7 @@ body {
 
 .about-image {
   width: 100%;
-  height: 100%;
+  height: inherit;
   margin-bottom: 3rem;
 }
 
@@ -400,7 +405,7 @@ body {
 -----------------------------*/
 
 @media only screen and (min-width: 480px) {
-  .about-image { width: 50% }
+  .about-image { width: 50%; }
 }
 
 @media only screen and (min-width: 720px) {
@@ -412,6 +417,7 @@ body {
   .about-info { flex-direction: row; }
   .about-image {
     max-width: 300px;
+    height: 100%;
     margin-right: 3rem;
     margin-bottom: 0;
   }
