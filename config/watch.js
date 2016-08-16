@@ -10,5 +10,7 @@ module.exports = {
     [layouts]: "**/*",
     [content]: "**/*",
     [assets]: "**/*"
-  }
+  },
+  // Disabled logs to let Browsersync do it
+  log: (options) => {}
 };

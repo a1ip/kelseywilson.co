@@ -18,7 +18,7 @@ var watch        = require("metalsmith-watch");
 
 var defaults = require("./defaults");
 var step     = require("./build").step;
-var status   = require("./build").status;
+var serve   = require("./build").serve;
 
 var config = {
   assets:      require("./assets"),
@@ -33,12 +33,14 @@ var config = {
   watch:       require("./watch")
 };
 
+var production = ((process.env.NODE_ENV || '').trim().toLowerCase() === 'production')
+
 //=======================================
 //  Build pipeline - order does matter!
 //=======================================
 
-metalsmith(__dirname)
-  .clean(true)
+var ms = metalsmith(__dirname)
+  .clean(production)
   .metadata(defaults,                     step("Metadata Defined"))
   .source("../" + defaults.contentDir,    step("Getting content"))
   .destination("../" + defaults.buildDir, step("Creating build directory"))
@@ -52,6 +54,6 @@ metalsmith(__dirname)
   .use(copy(config.copy),                 step("Repo Folder Copied"))
   .use(sass(config.sass),                 step("SCSS Processed"))
   .use(prefix(),                          step("CSS Prefixed"))
-  .use(uglify(config.uglify),             step("JS Uglified"))
-  // .use(watch(config.watch))
-  .build(status);
+  .use(uglify(config.uglify),             step("JS Uglified"));
+
+(production) ? ms.build(function (err) { if (err) throw err }) : ms.use(watch(config.watch)).build(serve)
