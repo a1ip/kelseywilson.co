@@ -1,3 +1,5 @@
+var production = ((process.env.NODE_ENV || '').trim().toLowerCase() === 'production')
+
 // https://github.com/ksmithut/metalsmith-uglify
 module.exports = {
   // put dependencies before other js files
@@ -7,5 +9,5 @@ module.exports = {
   // remove original unminified files
   removeOriginal: true,
   // create a map file
-  sourceMap: true
+  sourceMap: !production
 };
